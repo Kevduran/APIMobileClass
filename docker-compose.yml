@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  app:
+    container_name: app
+    restart: always
+    environment:
+      - DEBUG=dummyDictionary:*
+    build: .
+    ports:
+      - "3000:3000"
