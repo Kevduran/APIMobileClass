@@ -13,6 +13,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+var passport = require("passport");
+require("./auth/auth");
+
+require("./database/config");
+
+app.use(authRouter);
+var userRouter = require("./routers/user");
+var wordRouter = require("./routers/word");
 
 
+app.use("/words", wordRouter);
+app.use("/users", userRouter);
 module.exports = app;
